@@ -20,7 +20,6 @@ const SingleProduct = () => {
   const { id } = useParams();
 
   const {
-    id: alias,
     name,
     company,
     price,
