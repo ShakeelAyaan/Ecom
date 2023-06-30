@@ -32,7 +32,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
-  }, []);
+  }, ["https://api.pujakaitem.com/api/products"]);
 
   if (isSingleLoading) {
     return <div className="page_loading">Loading.....</div>;
