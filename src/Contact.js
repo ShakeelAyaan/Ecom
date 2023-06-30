@@ -36,10 +36,7 @@ const Contact = () => {
   return (
     <Wrapper>
       <h2 className="common-heading">Contact page</h2>
-
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.265588856342!2d73.91455641541671!3d18.562061287384868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b3a3bf%3A0x6f7fdcc8e4d6c77e!2sPhoenix%20Marketcity%20-%20Viman%20Nagar!5e0!3m2!1sen!2sin!4v1664345115285!5m2!1sen!2sin"
-        width="100%"
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60264.37166395307!2d76.74061672550194!3d19.2595995374547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd018326e0f9865%3A0xcb2bf94fef760970!2sParbhani%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1688109725421!5m2!1sen!2sin"
         height="400"
         style={{ border: 0 }}
         allowFullScreen=""
@@ -50,7 +47,7 @@ const Contact = () => {
       <div className="container">
         <div className="contact-form">
           <form
-            action="https://formspree.io/f/xeqdgwnq"
+            action="https://formspree.io/f/xleyroza"
             method="POST"
             className="contact-inputs">
             <input
