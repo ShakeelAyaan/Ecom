@@ -32,7 +32,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
-  }, [getSingleProduct , id]);
+  },[API]);
 
   if (isSingleLoading) {
     return <div className="page_loading">Loading.....</div>;
@@ -45,7 +45,7 @@ const SingleProduct = () => {
         <div className="grid grid-two-column">
           {/* product Images  */}
           <div className="product_images">
-            <MyImage imgs={image} />
+            <MyImage imgs={image} key={'alt'}/>
           </div>
 
           {/* product dAta  */}

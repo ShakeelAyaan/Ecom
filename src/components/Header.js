@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <MainHeader>
       <NavLink to="/">
-        <img src="https://img.freepik.com/premium-vector/3d-cartoon-shopping-cart-isolated-white-background-vector-3d-illustration_221648-538.jpg?w=740" alt="my lgo img" />
+        <img src="https://blog.flamingtext.com/blog/2023/06/30/flamingtext_com_1688153048_333724823.png" border="0" alt="Logo Design by FlamingText.com" />
       </NavLink>
       <Nav />
     </MainHeader>
@@ -18,9 +18,9 @@ const MainHeader = styled.header`
   padding: 0 4.8rem;
   height: 10rem;
   // background-color: ${({ theme }) => theme.colors.bg};
-  background-color:white;
+  background-color:#f2f2f2;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   position: relative;
 
@@ -28,13 +28,17 @@ const MainHeader = styled.header`
     height: 5rem;
   }
   img{
-    width:200px;
-    height:300px;
-    margin-top:5rem;
-    border-radius:2px;
-    background-color:${({theme})=> theme.colors.bg};
-    transform: scale(1.4);
-    transform: rotate3d(0, 1, 0.5, 3.142rad);
+    width:280px;
+    height:10rem;
+    margin-top:1rem;
+    padding-right:4rem;
+    margin-right:-2rem;
+    // border-radius:2px;
+    // background-color:${({theme})=> theme.colors.bg};
+    // transform: scale(0.5);
+    //  position:relative;
+    //  left:-4rem;
+    // transform: rotate3d(0, 1, 0.5, 3.142rad);
 
   }
  
