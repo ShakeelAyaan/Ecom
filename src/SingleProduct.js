@@ -32,6 +32,9 @@ const SingleProduct = () => {
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
+    return () => {
+      getSingleProduct(`${API}?id=${id}`)
+    }
   },[API , id]);
 
   if (isSingleLoading) {
