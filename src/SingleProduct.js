@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { useProductContext } from "./context/productcontex";
+// import { useProductContext } from "./context/productcontex";
 import PageNavigation from "./components/PageNavigation";
 import MyImage from "./components/MyImage";
 import { Container } from "./styles/Container";
@@ -10,62 +10,77 @@ import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import Star from "./components/Star";
 import AddToCart from "./components/AddToCart";
-
-const API = "https://api.pujakaitem.com/api/products";
+import axios from "axios";
+// import axios from "axios";
 
 const SingleProduct = () => {
-  const { getSingleProduct, isSingleLoading, singleProduct } =
-    useProductContext();
+  const [state, setstate] = useState([])
 
+  // const {
+  //   name,
+  //   company,
+  //   price,
+  //   description,
+  //   stock,
+  //   stars,
+  //   reviews,
+  //   image,
+  // } = state;
   const { id } = useParams();
+ 
+  const API = `https://api.pujakaitem.com/api/products?id=${id}`;
+  
 
-  const {
-    name,
-    company,
-    price,
-    description,
-    stock,
-    stars,
-    reviews,
-    image,
-  } = singleProduct;
-
+  // const FetchApi =  useCallback(() => {
+  //   // getSingleProduct(state)
+  // },[ getSingleProduct ,state ])
+   
+  //   useCallback(() => {
+  //     getSingleProduct(state)
+  // }, [getSingleProduct, state])
+  
   useEffect(() => {
-    getSingleProduct(`${API}?id=${id}`);
-    return () => {
-      getSingleProduct(`${API}?id=${id}`)
+    let nymar = async () => {
+          // dispatch({ type: "SET_SINGLE_LOADING" });
+      let res = await axios.get(API)
+        .then(res => res.data)
+    setstate(res)
     }
-  },[API , id]);
+    nymar()
+  },[API ]);
+  
 
-  if (isSingleLoading) {
+    
+
+  if (state.length===0) {
     return <div className="page_loading">Loading.....</div>;
   }
 
   return (
     <Wrapper>
-      <PageNavigation title={name} />
+      <PageNavigation title={state.name} />
       <Container className="container">
         <div className="grid grid-two-column">
           {/* product Images  */}
           <div className="product_images">
-            <MyImage imgs={image} key={'alt'}/>
+            <MyImage imgs={state.image} key={'alt'}/>
           </div>
 
           {/* product dAta  */}
           <div className="product-data">
-            <h2>{name}</h2>
-            <Star stars={stars} reviews={reviews} />
+            <h2>{state.name}</h2>
+            <Star stars={state.stars} reviews={state.reviews} />
 
             <p className="product-data-price">
               MRP:
               <del>
-                <FormatPrice price={price + 250000} />
+                <FormatPrice price={state.price + 250000} />
               </del>
             </p>
             <p className="product-data-price product-data-real-price">
-              Deal of the Day: <FormatPrice price={price} />
+              Deal of the Day: <FormatPrice price={state.price} />
             </p>
-            <p>{description}</p>
+            <p>{state.description}</p>
             <div className="product-data-warranty">
               <div className="product-warranty-data">
                 <TbTruckDelivery className="warranty-icon" />
@@ -91,17 +106,17 @@ const SingleProduct = () => {
             <div className="product-data-info">
               <p>
                 Available:
-                <span> {stock > 0 ? "In Stock" : "Not Available"}</span>
+                <span> {state.stock > 0 ? "In Stock" : "Not Available"}</span>
               </p>
               <p>
-                ID : <span> {id} </span>
+                ID : <span> {state.id} </span>
               </p>
               <p>
-                Brand :<span> {company} </span>
+                Brand :<span> {state.company} </span>
               </p>
             </div>
             <hr />
-            {stock > 0 && <AddToCart product={singleProduct} />}
+            {state.stock > 0 && <AddToCart product={state} />}
           </div>
         </div>
       </Container>
